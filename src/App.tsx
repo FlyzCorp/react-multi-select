@@ -1,24 +1,18 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import MultiSelect, { MultiSelectOption } from './components/MultiSelect/MultiSelect';
+import './App.scss';
+
+const items: MultiSelectOption[] = [
+  { label: "Natation", value: "44" },
+  { label: "Basket", value: "45" },
+  { label: "Football", value: "46" },
+  { label: "Tennis", value: "47" }
+];
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+      <MultiSelect name="Sports" label="sports" options={items} onChange={(v: string) => console.log(v)} />
     </div>
   );
 }

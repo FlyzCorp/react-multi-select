@@ -1,0 +1,121 @@
+.fz-multiselect {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  min-width: 200px;
+
+  .fz-multiselect-label {
+    font-size: small;
+    margin: 5px 0;
+  }
+
+  .fz-multiselect-container {
+    outline: 1px solid black;
+    border-radius: 5px;
+    user-select: none;
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    &:focus-within {
+      outline: 2px solid #0082C3;
+    }
+
+    .arrow {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 15px;
+      transition: transform 0.3s;
+      background-color: black;
+      align-content: center;
+      mask: url("data:image/svg+xml,%3Csvg viewBox='0 0 16 16' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='m8 8.781 3.3-3.3.943.943L8 10.667 3.757 6.424l.943-.943 3.3 3.3z'/%3E%3C/svg%3E");
+
+      &.opened {
+        transform: rotate(-180deg);
+        transform-origin: center;
+        display: inline-block;
+      }
+    }
+
+    .fz-multiselect-filter-input {
+      border: none;
+      min-width: 80px;
+      height: 80%;
+      margin-left: 5px;
+      font-size: large;
+
+      &:focus {
+        border: none;
+        outline: none;
+      }
+    }
+
+    .fz-multiselect-selected {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+
+      .fz-multiselect-pills {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        border-radius: 5px;
+
+        margin: 0 5px;
+        color: white;
+        font-weight: 900;
+        background-color: #0082C3;
+        font-size: small;
+
+        div {
+          padding: 4px 10px;
+        }
+
+        &:hover {
+          cursor: pointer;
+          background-color: #00689c;
+        }
+      }
+    }
+  }
+
+  .fz-multiselect-content {
+    border-radius: 5px;
+    margin-top: 10px;
+    visibility: hidden;
+    max-height: 0px;
+    overflow-y: auto;
+    opacity: 0;
+    transition: max-height 0.3s;
+    transition: opacity 0.3s;
+
+    background-color: white;
+    box-shadow: rgba(0, 83, 125, 0.1) 0px 24px 24px 0px;
+
+    &.active {
+      visibility: visible;
+      opacity: 1;
+      max-height: 200px;
+    }
+
+    ul {
+      padding: 0;
+      margin: 0;
+
+      li {
+        list-style: none;
+        padding: 10px 5px;
+        cursor: pointer;
+
+        &:hover {
+          background-color: rgba(0, 162, 244, 0.2);
+        }
+      }
+    }
+  }
+}
